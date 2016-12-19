@@ -1,0 +1,16 @@
+{
+  "name": "ipfob-setter-example",
+  "version": "1.0.0",
+  "description": "An example of how to set ones alarm using automation such as an Amazon Dash button",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "R. Stephen Guerra",
+  "license": "Apache",
+  "dependencies": {
+    "ipfob-setter": "^1.0.1",
+    "moment": "^2.17.1",
+    "node-dash-button": "^0.6.1"
+  }
+}
