@@ -3,21 +3,33 @@
 
     const ipfob = require('ipfob-setter');
     const dash_button = require('node-dash-button');
-    const moment = require('moment');
-
-    let dashMac = '0c:47:c9:04:94:a4';
-    let dash = dash_button(dashMac, null, null, 'all');
-    let lastEntryTime;
-
-    dash.on("detected", () => {
-        let secondsDiff = moment().diff(lastEntryTime, 'seconds');
-        if (lastEntryTime && secondsDiff < 60)
-        {
-            console.log("Alarm already set, still waiting");
-            return;
+    const justonce = require('justonce');
+    const settings = require('./config/settings.js');
+    const makerWebtask = require('maker-webtask');
+    
+    function setAlarm() {
+        justonce.run(() => {
+                console.log("Alarm set");
+                ipfob.setAway();
+            }, 60,
+            () => console.log("Alarm already set, still waiting"));
+    }
+    
+    let dashMacs = settings.dashSettings.dashMacAddress;
+    if (dashMacs) {
+        dashMacs.foreach(mac => {
+            let dash = dash_button(mac, null, null, 'all');
+            dash.on("detected", () => {
+                setAlarm();
+            });
+        });    
+    }
+    
+    function turnOnAlarm(message) {
+        if (message.command === 'on') {
+            setAlarm();
         }
-        console.log("Alarm set");
-        ipfob.setAway();
-        lastEntryTime = moment();
-    });
+    }
+    makerWebtask.run('alarm', turnOnAlarm);
+
 })();

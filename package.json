@@ -7,10 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "R. Stephen Guerra",
-  "license": "Apache",
+  "license": "Apache-2.0",
   "dependencies": {
-    "ipfob-setter": "^1.0.1",
-    "moment": "^2.17.1",
+    "command-line-args": "^3.0.4",
+    "ipfob-setter": "^1.0.5",
+    "justonce": "^1.0.1",
+    "maker-webtask": "^1.0.10",
     "node-dash-button": "^0.6.1"
   }
 }
