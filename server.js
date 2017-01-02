@@ -30,6 +30,6 @@
             setAlarm();
         }
     }
-    makerWebtask.run('alarm', 5, turnOnAlarm);
+    makerWebtask.run('alarm', 5, turnOnAlarm, error => console.log(error));
 
 })();

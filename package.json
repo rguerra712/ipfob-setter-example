@@ -1,6 +1,6 @@
 {
   "name": "ipfob-setter-example",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An example of how to set ones alarm using automation such as an Amazon Dash button",
   "main": "server.js",
   "scripts": {
